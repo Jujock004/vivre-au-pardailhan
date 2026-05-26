@@ -1,7 +1,26 @@
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { PortableText } from "@portabletext/react";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
+
+const portableTextComponents: PortableTextComponents = {
+  types: {
+    image: ({ value }) => {
+      if (!value?.asset?._ref) return null;
+      return (
+        <div className="my-8">
+          <Image
+            src={urlFor(value).url()}
+            alt={value.alt || ""}
+            width={800}
+            height={500}
+            className="rounded-sm object-cover w-full"
+          />
+        </div>
+      );
+    },
+  },
+};
 
 // 1. On s'assure que la fonction reçoit bien le slug
 async function getArticle(slug: string) {
@@ -63,7 +82,10 @@ export default async function ArticleDetail({
 
       {/* Rendu du texte riche avec style Typography */}
       <div className="prose prose-stone prose-lg max-w-none font-sans leading-relaxed text-stone-800">
-        <PortableText value={article.body} />
+        <PortableText
+          value={article.body}
+          components={portableTextComponents}
+        />
       </div>
 
       <footer className="mt-16 pt-8 border-t border-stone-200">
