@@ -1,3 +1,4 @@
+import SectionHeader from "@/components/articles/SectionHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
@@ -21,21 +22,13 @@ export default async function ArticlesPage() {
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-20">
-      <header className="mb-16">
-        <span className="text-[#968370] uppercase tracking-widest text-xs font-bold">
-          Chroniques
-        </span>
-        <h1 className="text-5xl font-serif text-stone-900 mt-2">
-          Le Bulletin du <span className="italic">Pardailhan</span>
-        </h1>
-        <div className="h-1 w-20 bg-[#968370] mt-6"></div>
-      </header>
+      <SectionHeader type="Articles" />
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
         {posts.map(
           (post: {
             slug: { current: string };
-            mainImage: string;
+            mainImage: { asset: { url: string } };
             publishedAt: string;
             title: string;
             excerpt: string;

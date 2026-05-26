@@ -37,8 +37,8 @@ export default defineType({
       type: "string",
       options: {
         list: [
-          { title: "Histoire & Patrimoine", value: "Histoire" },
-          { title: "Nature & Environnement", value: "Environnement" },
+          { title: "Histoire", value: "Histoire" },
+          { title: "Environnement", value: "Environnement" },
           { title: "Actualités", value: "Actualités" },
         ],
       },
