@@ -18,7 +18,7 @@ export default defineType({
       title: "Slug (URL)",
       type: "slug",
       description:
-        "Génère l'adresse de l'article (ex: le-baron-de-pardailhan).",
+        "Génère l'adresse de l'article (ex: histoire-du-pardailhan).",
       options: {
         source: "title",
         maxLength: 96,
@@ -30,6 +30,29 @@ export default defineType({
       title: "Auteur",
       type: "string",
       initialValue: "Association Histoire et Patrimoine",
+    }),
+    defineField({
+      name: "category",
+      title: "Rubrique Principale",
+      type: "string",
+      options: {
+        list: [
+          { title: "Histoire & Patrimoine", value: "Histoire" },
+          { title: "Nature & Environnement", value: "Environnement" },
+          { title: "Actualités", value: "Actualités" },
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "subTags",
+      title: "Sous-sections / Mots-clés libres",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        layout: "tags", // Saisie libre : on tape le mot + Entrée
+      },
+      description: "Exemples : Baron, Grotte, Archive, Événement, XIXe...",
     }),
     defineField({
       name: "mainImage",

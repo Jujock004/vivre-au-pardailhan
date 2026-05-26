@@ -13,6 +13,7 @@
     "@sanity/image-url": "^2.1.1",
     "@sanity/locale-fr-fr": "^1.2.32",
     "@sanity/vision": "^5.24.0",
+    "@tailwindcss/typography": "^0.5.19",
     "groq": "^5.24.0",
     "next": "16.2.1",
     "next-sanity": "^12.4.3",

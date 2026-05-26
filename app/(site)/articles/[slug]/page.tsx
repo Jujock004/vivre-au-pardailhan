@@ -20,13 +20,69 @@ const portableTextComponents: PortableTextComponents = {
       );
     },
   },
+  block: {
+    h1: ({ children }) => (
+      <h1 className="text-3xl font-serif font-bold mt-10 mb-4 text-stone-900">
+        {children}
+      </h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="text-2xl font-serif font-bold mt-8 mb-3 text-stone-900">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-xl font-serif font-semibold mt-6 mb-2 text-stone-800">
+        {children}
+      </h3>
+    ),
+    h4: ({ children }) => (
+      <h4 className="text-lg font-semibold mt-4 mb-2 text-stone-800">
+        {children}
+      </h4>
+    ),
+    normal: ({ children }) => (
+      <p className="mb-4 leading-relaxed">{children}</p>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote className="border-l-4 border-[#968370] pl-5 my-6 italic text-stone-600">
+        {children}
+      </blockquote>
+    ),
+  },
+  marks: {
+    strong: ({ children }) => <strong className="font-bold">{children}</strong>,
+    em: ({ children }) => <em className="italic">{children}</em>,
+    link: ({ value, children }) => (
+      <a
+        href={value?.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline text-[#968370] hover:text-stone-900"
+      >
+        {children}
+      </a>
+    ),
+  },
+  list: {
+    bullet: ({ children }) => (
+      <ul className="list-disc pl-6 mb-4 space-y-1">{children}</ul>
+    ),
+    number: ({ children }) => (
+      <ol className="list-decimal pl-6 mb-4 space-y-1">{children}</ol>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }) => <li className="leading-relaxed">{children}</li>,
+    number: ({ children }) => <li className="leading-relaxed">{children}</li>,
+  },
 };
 
 // 1. On s'assure que la fonction reçoit bien le slug
 async function getArticle(slug: string) {
   const query = `*[_type == "post" && slug.current == $slug][0] {
     title,
-    mainImage,
+    mainImage { asset->, crop, hotspot },
     publishedAt,
     body,
     "author": author
@@ -70,7 +126,11 @@ export default async function ArticleDetail({
         {article.mainImage && (
           <div className="relative h-[450px] w-full shadow-2xl overflow-hidden rounded-sm bg-stone-100">
             <Image
-              src={urlFor(article.mainImage).url()}
+              src={urlFor(article.mainImage)
+                .width(768)
+                .height(450)
+                .fit("crop")
+                .url()}
               alt={article.title}
               fill
               className="object-cover"
