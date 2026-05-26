@@ -63,13 +63,17 @@ export default function Header() {
               </Link>
 
               <ul className="absolute left-0 top-full hidden group-hover:block bg-white border border-stone-100 shadow-xl py-3 z-10 min-w-48">
-                {["Histoire", "Environnement", "Actualités"].map((cat) => (
-                  <li key={cat}>
+                {[
+                  { label: "Histoire", slug: "histoire" },
+                  { label: "Environnement", slug: "environnement" },
+                  { label: "Actualités", slug: "actualites" },
+                ].map((cat) => (
+                  <li key={cat.slug}>
                     <Link
-                      href={`/articles/${cat.toLowerCase()}`}
+                      href={`/articles/${cat.slug}`}
                       className="block px-6 py-2 text-stone-600 hover:bg-stone-50 hover:text-[#968370] lowercase first-letter:uppercase transition-colors"
                     >
-                      {cat}
+                      {cat.label}
                     </Link>
                   </li>
                 ))}
