@@ -40,6 +40,7 @@ export default defineType({
           { title: "Histoire", value: "Histoire" },
           { title: "Environnement", value: "Environnement" },
           { title: "Actualités", value: "Actualités" },
+          { title: "Archives", value: "Archives" },
         ],
       },
       validation: (Rule) => Rule.required(),

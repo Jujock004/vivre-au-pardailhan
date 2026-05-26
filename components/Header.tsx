@@ -67,6 +67,7 @@ export default function Header() {
                   { label: "Histoire", slug: "histoire" },
                   { label: "Environnement", slug: "environnement" },
                   { label: "Actualités", slug: "actualites" },
+                  { label: "Archives", slug: "archives" },
                 ].map((cat) => (
                   <li key={cat.slug}>
                     <Link

@@ -1,7 +1,9 @@
+import { categoryColors, categorySlug } from "@/lib/categories";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
+import Link from "next/link";
 
 const portableTextComponents: PortableTextComponents = {
   types: {
@@ -85,6 +87,7 @@ async function getArticle(slug: string) {
     mainImage { asset->, crop, hotspot },
     publishedAt,
     body,
+    category,
     "author": author
   }`;
 
@@ -111,7 +114,7 @@ export default async function ArticleDetail({
   }
 
   return (
-    <main className="max-w-3xl mx-auto px-6 py-24">
+    <>
       <header className="mb-12 text-center">
         <p className="text-[#968370] uppercase tracking-widest text-[10px] font-bold mb-4">
           {new Date(article.publishedAt).toLocaleDateString("fr-FR", {
@@ -120,9 +123,17 @@ export default async function ArticleDetail({
             year: "numeric",
           })}
         </p>
-        <h1 className="text-4xl md:text-5xl font-serif text-stone-900 leading-tight mb-8">
+        <h1 className="text-4xl md:text-5xl font-serif text-stone-900 leading-tight mb-4">
           {article.title}
         </h1>
+        {article.category && (
+          <Link
+            href={`/articles/${categorySlug[article.category] ?? article.category.toLowerCase()}`}
+            className={`inline-block ${categoryColors[article.category] ?? "bg-[#968370]"} text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 mb-8 hover:opacity-80 transition-opacity`}
+          >
+            {article.category}
+          </Link>
+        )}
         {article.mainImage && (
           <div className="relative h-[450px] w-full shadow-2xl overflow-hidden rounded-sm bg-stone-100">
             <Image
@@ -140,7 +151,6 @@ export default async function ArticleDetail({
         )}
       </header>
 
-      {/* Rendu du texte riche avec style Typography */}
       <div className="prose prose-stone prose-lg max-w-none font-sans leading-relaxed text-stone-800">
         <PortableText
           value={article.body}
@@ -148,11 +158,17 @@ export default async function ArticleDetail({
         />
       </div>
 
-      <footer className="mt-16 pt-8 border-t border-stone-200">
+      <footer className="mt-16 pt-8 border-t border-stone-200 flex items-center justify-between">
         <p className="italic text-stone-500 text-sm">
           Rédigé par {article.author || "Association Vivre au Pardailhan"}
         </p>
+        <Link
+          href="/articles"
+          className="text-[#968370] uppercase tracking-widest text-[10px] font-bold hover:text-stone-900 transition-colors"
+        >
+          ← Tous les articles
+        </Link>
       </footer>
-    </main>
+    </>
   );
 }

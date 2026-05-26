@@ -1,7 +1,7 @@
 "use client";
 
 interface HeaderProps {
-  type: "Histoire" | "Environnement" | "Actualites" | "Articles";
+  type: "Histoire" | "Environnement" | "Actualites" | "Articles" | "Archives";
 }
 
 import { SECTIONS_DATA } from "@/constants/sections";
