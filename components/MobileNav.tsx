@@ -94,9 +94,7 @@ export default function MobileNav() {
           </div>
 
           <Link
-            href="https://www.helloasso.com/associations/histoire-et-patrimoine-du-pardailhan/formulaires/1"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/dons"
             onClick={close}
             className="bg-[#968370] text-white text-center py-3 uppercase tracking-widest text-xs font-semibold hover:bg-[#7d6b5d] transition-colors"
           >
