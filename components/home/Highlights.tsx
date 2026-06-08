@@ -6,7 +6,7 @@ import Link from "next/link";
 
 async function getFeaturedPosts() {
   return client.fetch(
-    `*[_type == "post" && featured == true] | order(publishedAt desc) [0..5] {
+    `*[_type == "post"] | order(featured desc, publishedAt desc) [0..5] {
       title,
       slug,
       category,

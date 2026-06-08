@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function EnvironnementPage() {
   return (
@@ -96,6 +97,21 @@ export default function EnvironnementPage() {
             </p>
           </div>
         </div>
+      </section>
+      <section className="py-16 text-center border-t border-stone-100">
+        <p className="text-[#968370] uppercase tracking-widest text-xs font-bold mb-4">
+          Aller plus loin
+        </p>
+        <h2 className="font-serif text-3xl text-stone-900 mb-8">
+          Tous nos articles sur{" "}
+          <span className="italic">l&apos;environnement</span>
+        </h2>
+        <Link
+          href="/articles/environnement"
+          className="inline-block bg-stone-900 text-white px-8 py-4 uppercase tracking-widest text-xs font-bold hover:bg-[#968370] transition-colors duration-300"
+        >
+          Consulter les articles
+        </Link>
       </section>
     </main>
   );

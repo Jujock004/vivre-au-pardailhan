@@ -17,7 +17,7 @@ export function Historique() {
           <div className="absolute -left-[9px] md:left-1/2 md:-ml-2 w-4 h-4 rounded-full bg-[#968370] border-4 border-white shadow"></div>
           <div className="md:w-[45%] pl-8 md:pl-0 md:text-right">
             <span className="font-serif text-2xl text-[#968370] block mb-1">
-              20XX
+              2018
             </span>
             <h3 className="font-bold text-stone-800 uppercase tracking-wide mb-2 text-sm">
               Fondation de l&apos;Association

@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="relative w-full">
       {/* 1. L'image de fond (Le Village) */}
-      <div className="relative h-[60vh] md:h-[70vh] w-full">
+      <div className="relative h-[35vh] md:h-[55vh] w-full">
         <Image
           src="/pardailhan.jpeg" // photo du village
           alt="Village de Pardailhan"
