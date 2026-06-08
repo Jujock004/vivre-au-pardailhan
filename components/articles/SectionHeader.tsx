@@ -16,7 +16,9 @@ export default function SectionHeader({ type }: HeaderProps) {
       <span className="text-[#968370] uppercase tracking-widest text-xs font-bold">
         {data.subtitle}
       </span>
-      <h1 className="text-5xl font-serif text-stone-900 mt-2">{data.title}</h1>
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-stone-900 mt-2">
+        {data.title}
+      </h1>
       <div className="h-1 w-20 bg-[#968370] mt-6"></div>
     </header>
   );

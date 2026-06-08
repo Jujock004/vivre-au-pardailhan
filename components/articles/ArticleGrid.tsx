@@ -41,18 +41,18 @@ const categoryColors: Record<string, string> = {
 export default function ArticleGrid({ posts }: { posts: Post[] }) {
   if (posts.length === 0) {
     return (
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-12">
         <p className="text-stone-500 italic">Aucun article pour le moment.</p>
       </div>
     );
   }
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-12">
       {posts.map((post) => (
         <article key={post.slug.current} className="group cursor-pointer">
           <Link href={`/articles/${post.slug.current}`}>
-            <div className="relative h-64 w-full mb-6 overflow-hidden shadow-xl">
+            <div className="relative h-48 md:h-64 w-full mb-6 overflow-hidden shadow-xl">
               <Image
                 src={urlFor(post.mainImage)
                   .width(768)
@@ -77,7 +77,7 @@ export default function ArticleGrid({ posts }: { posts: Post[] }) {
                 month: "long",
               })}
             </p>
-            <h2 className="font-serif text-2xl text-stone-900 group-hover:text-[#968370] transition-colors mb-3">
+            <h2 className="font-serif text-xl md:text-2xl text-stone-900 group-hover:text-[#968370] transition-colors mb-3">
               {post.title}
             </h2>
             <p className="text-stone-600 text-sm leading-relaxed line-clamp-3">

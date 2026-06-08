@@ -3,22 +3,20 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <main className="w-full pb-24">
-      {/* 1. HERO À PROPOS */}
-      <header className="max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-serif text-stone-900 uppercase tracking-widest">
+    <main className="w-full pb-16 md:pb-24">
+      <header className="max-w-5xl mx-auto px-6 pt-12 md:pt-16 pb-10 md:pb-12 text-center">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-stone-900 uppercase tracking-widest">
           L&apos;Association
         </h1>
-        <p className="mt-6 text-[#968370] italic text-xl font-light max-w-2xl mx-auto">
+        <p className="mt-6 text-[#968370] italic text-base md:text-xl font-light max-w-2xl mx-auto">
           &quot;Histoire et Patrimoine du Pardailhan : œuvrer pour que la pierre
           garde sa mémoire et que l&apos;eau garde sa pureté.&quot;
         </p>
         <div className="h-1 w-20 bg-[#968370] mx-auto mt-8"></div>
       </header>
 
-      {/* 2. SECTION NOTRE HISTOIRE */}
-      <section className="max-w-7xl mx-auto py-16 px-6 flex flex-col md:flex-row gap-16 items-center">
-        <div className="md:w-1/2 relative h-[500px] w-full shadow-2xl">
+      <section className="max-w-7xl mx-auto py-10 md:py-16 px-6 flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+        <div className="md:w-1/2 relative h-[280px] md:h-[400px] lg:h-[500px] w-full shadow-2xl">
           <Image
             src="https://images.midilibre.fr/api/v1/images/view/68d0bfe49215bfa80e0b8e83/large/image.jpg?v=1"
             alt="Réunion de l'association"
@@ -27,7 +25,7 @@ export default function AboutPage() {
           />
         </div>
         <div className="md:w-1/2 space-y-6">
-          <h2 className="font-serif text-3xl text-stone-800">
+          <h2 className="font-serif text-2xl md:text-3xl text-stone-800">
             Une Genèse <span className="text-[#968370] italic">Citoyenne</span>
           </h2>
           <div className="space-y-4 text-stone-600 leading-relaxed">
@@ -49,11 +47,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 3. SECTION NOS MISSIONS (Bloc Marron Beige) */}
-      <section className="bg-[#968370] py-20 text-white mt-12">
+      <section className="bg-[#968370] py-12 md:py-20 text-white mt-8 md:mt-12">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-3xl mb-12 italic">Nos engagements</h2>
-          <div className="grid md:grid-cols-3 gap-12">
+          <h2 className="font-serif text-2xl md:text-3xl mb-8 md:mb-12 italic">
+            Nos engagements
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="space-y-4">
               <div className="text-3xl">🏛️</div>
               <h3 className="font-bold uppercase tracking-wider text-sm">
@@ -88,13 +87,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. LE MOT DU PRÉSIDENT */}
-      <section className="max-w-4xl mx-auto py-24 px-6 text-center">
+      <section className="max-w-4xl mx-auto py-12 md:py-24 px-6 text-center">
         <div className="relative">
-          <span className="text-9xl font-serif text-stone-100 absolute -top-16 -left-8 -z-10 tracking-tighter">
+          <span className="hidden md:block text-9xl font-serif text-stone-100 absolute -top-16 -left-8 -z-10 tracking-tighter">
             &quot;
           </span>
-          <p className="text-2xl font-serif italic text-stone-700 leading-relaxed">
+          <p className="text-xl md:text-2xl font-serif italic text-stone-700 leading-relaxed">
             Rejoindre notre association, c&apos;est devenir le gardien d&apos;un
             paysage qui nous dépasse et d&apos;une histoire qui nous lie.
           </p>
