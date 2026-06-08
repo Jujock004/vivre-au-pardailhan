@@ -1,4 +1,5 @@
 import Image from "next/image";
+import WeatherWidget from "./WeatherWidget";
 
 export default function Hero() {
   return (
@@ -14,6 +15,7 @@ export default function Hero() {
         />
         {/* Overlay léger pour lier l'image au reste du design */}
         <div className="absolute inset-0 bg-black/10"></div>
+        <WeatherWidget />
       </div>
 
       {/* 2. Le Bloc de texte (Le "Overlap") */}
