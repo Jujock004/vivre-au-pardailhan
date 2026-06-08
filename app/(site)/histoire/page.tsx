@@ -23,8 +23,8 @@ export default function HistoirePage() {
             Le Pardailhan, entre le Minervois et le Saint-Chinianais, est situé
             dans les montagnes du Bas-Languedoc. Son étendue est considérable,
             mais son terroir est décrit dès le 18e siècle comme peu fertile. Une
-            terre de labeur où les habitants vivaient &quot;d'une manière fort
-            dure&quot;.
+            terre de labeur où les habitants vivaient &quot;d&apos;une manière
+            fort dure&quot;.
           </p>
         </div>
         <div className="md:w-1/2 relative h-[260px] md:h-[360px] lg:h-[450px] w-full shadow-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
@@ -134,7 +134,7 @@ export default function HistoirePage() {
           Aller plus loin
         </p>
         <h2 className="font-serif text-2xl md:text-3xl text-stone-900 mb-8">
-          Tous nos articles <span className="italic">d'histoire</span>
+          Tous nos articles <span className="italic">d&apos;histoire</span>
         </h2>
         <Link
           href="/articles/histoire"

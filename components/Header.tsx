@@ -85,7 +85,9 @@ export default function Header() {
             {/* BOUTON DON */}
             <li>
               <Link
-                href="/dons"
+                href="https://www.helloasso.com/associations/histoire-et-patrimoine-du-pardailhan/formulaires/1"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-[#968370] text-white px-5 py-2.5 rounded-sm hover:bg-[#7d6b5d] transition-all duration-300 font-semibold shadow-sm"
               >
                 Nous soutenir
