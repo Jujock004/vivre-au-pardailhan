@@ -1,52 +1,23 @@
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import { categoryColors } from "@/lib/categories";
 import Image from "next/image";
 import Link from "next/link";
 
-const articles = [
-  {
-    id: 1,
-    title: "Le village vu du ciel",
-    category: "Environnement",
-    slug: "vue-panoramique",
-    img: "https://images.unsplash.com/photo-1505245208761-ba872912fac0?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: 2,
-    title: "Les ruelles historiques",
-    category: "Histoire",
-    slug: "ruelles-typiques",
-    img: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: 3,
-    title: "Détails d'architecture",
-    category: "Actualités",
-    slug: "details-architecture",
-    img: "https://images.unsplash.com/photo-1505245208761-ba872912fac0?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: 4,
-    title: "Le village vu du ciel",
-    category: "Environnement",
-    slug: "vue-panoramique",
-    img: "https://images.unsplash.com/photo-1505245208761-ba872912fac0?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: 5,
-    title: "Les ruelles historiques",
-    category: "Histoire",
-    slug: "ruelles-typiques",
-    img: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: 6,
-    title: "Détails d'architecture",
-    category: "Actualités",
-    slug: "details-architecture",
-    img: "https://images.unsplash.com/photo-1505245208761-ba872912fac0?auto=format&fit=crop&q=80&w=800",
-  },
-];
+async function getFeaturedPosts() {
+  return client.fetch(
+    `*[_type == "post" && featured == true] | order(publishedAt desc) [0..5] {
+      title,
+      slug,
+      category,
+      mainImage { asset->, crop, hotspot }
+    }`,
+  );
+}
 
-export default function FeaturedArticles() {
+export default async function FeaturedArticles() {
+  const articles = await getFeaturedPosts();
+
   return (
     <section className="max-w-7xl mx-auto py-20 px-6 bg-white">
       <h2 className="text-3xl font-bold font-serif text-center mb-16 uppercase tracking-[0.2em] text-stone-900">
@@ -54,25 +25,28 @@ export default function FeaturedArticles() {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {articles.map((article) => (
+        {articles.map((article: any) => (
           <Link
-            href={`/articles/${article.slug}`}
-            key={article.id}
+            href={`/articles/${article.slug.current}`}
+            key={article.slug.current}
             className="group flex flex-col h-full"
           >
-            {/* Partie Image (Moitié supérieure) */}
             <div className="relative h-64 w-full overflow-hidden">
               <Image
-                src={article.img}
+                src={urlFor(article.mainImage)
+                  .width(600)
+                  .height(400)
+                  .fit("crop")
+                  .url()}
                 alt={article.title}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
 
-            {/* Partie Texte (Moitié inférieure) */}
-            <div className="bg-[#968370] p-8 flex flex-col flex-grow text-white">
-              {" "}
+            <div
+              className={`${categoryColors[article.category] ?? "bg-[#968370]"} p-8 flex flex-col flex-grow text-white`}
+            >
               <span className="text-xs uppercase tracking-[0.2em] text-white/70 mb-3 font-sans">
                 {article.category}
               </span>

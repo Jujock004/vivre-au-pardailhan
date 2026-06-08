@@ -85,5 +85,13 @@ export default defineType({
         { type: "image" }, // Permet d'insérer des photos dans l'article
       ],
     }),
+    defineField({
+      name: "featured",
+      title: "À la une",
+      type: "boolean",
+      initialValue: false,
+      description:
+        "Afficher cet article dans la section 'À la une' de l'accueil.",
+    }),
   ],
 });
