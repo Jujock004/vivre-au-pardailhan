@@ -1,12 +1,11 @@
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { categoryColors } from "@/lib/categories";
 import Image from "next/image";
 import Link from "next/link";
 
 async function getFeaturedPosts() {
   return client.fetch(
-    `*[_type == "post"] | order(featured desc, publishedAt desc) [0..5] {
+    `*[_type == "post"] | order(publishedAt desc, featured desc) [0..5] {
       title,
       slug,
       category,
@@ -45,7 +44,7 @@ export default async function FeaturedArticles() {
             </div>
 
             <div
-              className={`${categoryColors[article.category] ?? "bg-[#968370]"} p-8 flex flex-col flex-grow text-white`}
+              className={`bg-[#968370] p-8 flex flex-col flex-grow text-white`}
             >
               <span className="text-xs uppercase tracking-[0.2em] text-white/70 mb-3 font-sans">
                 {article.category}
